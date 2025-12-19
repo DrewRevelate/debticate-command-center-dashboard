@@ -199,7 +199,20 @@ export default class CommandCenterContainer extends LightningElement {
     }
 
     get kpiSummary() {
-        return this.dashboardData?.kpiSummary || null;
+        // Compute KPI from chartData to ensure consistency with displayed chart
+        const chartData = this.chartData;
+        if (!chartData || chartData.length === 0) {
+            return this.dashboardData?.kpiSummary || null;
+        }
+
+        // Sum up counts and assets from the filtered chart data
+        const totalAccounts = chartData.reduce((sum, item) => sum + (item.value || 0), 0);
+        const totalAssets = chartData.reduce((sum, item) => sum + (item.assets || 0), 0);
+
+        return {
+            totalAccounts,
+            totalAssets
+        };
     }
 
     get filteredAccounts() {
@@ -343,6 +356,8 @@ export default class CommandCenterContainer extends LightningElement {
             const isSelected = this.selectedPriorityCodes.includes(item.label);
             const legendItem = {
                 code: item.label,
+                count: item.value,
+                labelWithCount: `${item.label} (${item.value})`,
                 color: item.color,
                 colorStyle: `--chip-color: ${item.color}`,
                 description: PRIORITY_LABELS[item.label] || `Priority ${item.label}`,
