@@ -691,7 +691,7 @@ public with sharing class DashboardController {
         if (isTop525Filter) {
             query += ' ORDER BY Total_Assets__c DESC NULLS LAST LIMIT 525';
         } else {
-            query += ' ORDER BY Name LIMIT 2000';
+            query += ' ORDER BY Name LIMIT 50000';
         }
 
         return Database.query(query);
