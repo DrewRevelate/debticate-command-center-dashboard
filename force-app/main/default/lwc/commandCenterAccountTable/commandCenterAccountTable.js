@@ -57,8 +57,9 @@ export default class CommandCenterAccountTable extends NavigationMixin(Lightning
         }
 
         // Map accounts to display format
+        const selectedCodes = this.selectedPriorityCodes || [];
         let data = this.accounts.map(acc => {
-            const isHighlighted = this.selectedPriorityCodes.length > 0 && this.selectedPriorityCodes.includes(acc.priority);
+            const isHighlighted = selectedCodes.length > 0 && selectedCodes.includes(acc.priority);
 
             return {
                 id: acc.id,
