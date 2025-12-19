@@ -774,14 +774,14 @@ public with sharing class DashboardController {
             Integer count = statusMap.get(status);
             statusMap.put(status, count == null ? 1 : count + 1);
 
-            // Track assets
+            // Track Annual Revenue Est.
             if (!priorityStatusAssets.containsKey(priority)) {
                 priorityStatusAssets.put(priority, new Map<String, Decimal>());
             }
             Map<String, Decimal> assetMap = priorityStatusAssets.get(priority);
             Decimal assets = assetMap.get(status);
-            Decimal accAssets = acc.Total_Assets__c != null ? acc.Total_Assets__c : 0;
-            assetMap.put(status, assets == null ? accAssets : assets + accAssets);
+            Decimal accRevenue = acc.Annual_Revenue_Est__c != null ? acc.Annual_Revenue_Est__c : 0;
+            assetMap.put(status, assets == null ? accRevenue : assets + accRevenue);
         }
 
         for (String priority : priorityStatusCounts.keySet()) {
@@ -948,8 +948,8 @@ public with sharing class DashboardController {
                 withPriority++;
             }
 
-            if (acc.Total_Assets__c != null) {
-                totalAssets += acc.Total_Assets__c;
+            if (acc.Annual_Revenue_Est__c != null) {
+                totalAssets += acc.Annual_Revenue_Est__c;
             }
 
             // Deal metrics
