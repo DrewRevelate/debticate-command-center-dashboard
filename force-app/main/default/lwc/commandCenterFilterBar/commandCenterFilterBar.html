@@ -66,20 +66,5 @@
             </div>
         </template>
 
-        <!-- Active Priority Code Filter Badge -->
-        <template if:true={hasPriorityCodeFilter}>
-            <div class="filter-group active-filter">
-                <span class="active-filter-badge">
-                    {priorityCodeFilterLabel}
-                    <button class="clear-filter-btn" onclick={handleClearPriorityCode}>
-                        <lightning-icon
-                            icon-name="utility:close"
-                            size="xx-small"
-                            alternative-text="Clear">
-                        </lightning-icon>
-                    </button>
-                </span>
-            </div>
-        </template>
     </div>
 </template>
