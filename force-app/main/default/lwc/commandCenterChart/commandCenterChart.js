@@ -69,7 +69,7 @@ export default class CommandCenterChart extends LightningElement {
     }
 
     get dataLabel() {
-        return this._displayMode === 'revenue' ? 'Revenue' : 'Record Count';
+        return this._displayMode === 'revenue' ? 'Annual Revenue Est.' : 'Record Count';
     }
 
     // Get the appropriate value based on display mode
