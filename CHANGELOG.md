@@ -38,6 +38,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 100% Apex test coverage
 - LWC best practices (reactive properties, event bubbling)
 
+## [1.1.0] - 2024-12-18
+
+### Changed
+- **Multi-Select Priority Codes** - Priority code filters now support selecting multiple codes simultaneously
+  - Click multiple chart bars to filter by multiple priority codes
+  - Click multiple priority code chips in the filter bar
+  - Selected codes are highlighted; non-selected codes are dimmed
+  - Account table highlights rows matching any selected priority code
+
 ## [Unreleased]
 
 ### Planned

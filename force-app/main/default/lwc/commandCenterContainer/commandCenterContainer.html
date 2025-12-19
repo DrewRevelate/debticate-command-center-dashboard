@@ -4,7 +4,7 @@
         <c-command-center-filter-bar
             filter-state={filterState}
             target-universe-data={targetUniverseData}
-            selected-priority-code={selectedPriorityCode}
+            selected-priority-codes={selectedPriorityCodes}
             legend-items={legendItems}
             onclearpriority={handleClearPriorityFilter}
             onprioritycodeclick={handlePriorityCodeClickEvent}>
@@ -45,7 +45,7 @@
                             chart-type={chartType}
                             chart-data={chartData}
                             display-mode={chartDisplayMode}
-                            selected-priority-code={selectedPriorityCode}
+                            selected-priority-codes={selectedPriorityCodes}
                             onbarclick={handleBarClick}
                             oncharttypechange={handleChartTypeChange}>
                         </c-command-center-chart>
@@ -61,7 +61,7 @@
                         <div class="table-right">
                             <c-command-center-account-table
                                 accounts={filteredAccounts}
-                                selected-priority-code={selectedPriorityCode}
+                                selected-priority-codes={selectedPriorityCodes}
                                 onrecordupdate={handleRecordUpdate}>
                             </c-command-center-account-table>
                         </div>

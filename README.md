@@ -10,7 +10,7 @@ A modern, interactive Salesforce Lightning Web Component dashboard for portfolio
 - **Bar Charts** - Vertical and horizontal chart views with smooth animations
 - **Priority Series Filtering** - Filter by D500, D600, D700 deal series
 - **Status Filtering** - Multi-select status chips with color coding
-- **Priority Code Drilldown** - Click chart bars to filter by specific priority codes
+- **Priority Code Drilldown** - Multi-select priority code filtering via chart bars or filter chips
 
 ### KPI Summary Row
 - **Record Count** - Total accounts in current view

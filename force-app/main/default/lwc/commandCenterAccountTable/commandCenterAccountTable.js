@@ -39,7 +39,7 @@ const PRIORITY_OPTIONS = Object.entries(PRIORITY_LABELS).map(([value, label]) =>
 
 export default class CommandCenterAccountTable extends NavigationMixin(LightningElement) {
     @api accounts = [];
-    @api selectedPriorityCode = null;
+    @api selectedPriorityCodes = []; // Multi-select priority codes
 
     // Sorting state
     @track sortField = 'name';
@@ -58,7 +58,7 @@ export default class CommandCenterAccountTable extends NavigationMixin(Lightning
 
         // Map accounts to display format
         let data = this.accounts.map(acc => {
-            const isHighlighted = this.selectedPriorityCode && acc.priority === this.selectedPriorityCode;
+            const isHighlighted = this.selectedPriorityCodes.length > 0 && this.selectedPriorityCodes.includes(acc.priority);
 
             return {
                 id: acc.id,

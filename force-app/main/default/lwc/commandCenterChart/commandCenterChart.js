@@ -23,15 +23,15 @@ const PRIORITY_LABELS = {
 export default class CommandCenterChart extends LightningElement {
     @api chartType = 'vertical';
 
-    @track _selectedPriorityCode = null;
+    @track _selectedPriorityCodes = []; // Multi-select priority codes
     @track _displayMode = 'count'; // 'count' or 'revenue'
 
     @api
-    get selectedPriorityCode() {
-        return this._selectedPriorityCode;
+    get selectedPriorityCodes() {
+        return this._selectedPriorityCodes;
     }
-    set selectedPriorityCode(value) {
-        this._selectedPriorityCode = value;
+    set selectedPriorityCodes(value) {
+        this._selectedPriorityCodes = value || [];
         if (this.chartJsLoaded && this._chartData.length > 0) {
             this.updateChart();
         }
@@ -167,10 +167,10 @@ export default class CommandCenterChart extends LightningElement {
         this.chart.data.datasets[0].data = data;
         this.chart.data.datasets[0].label = this.dataLabel;
 
-        // Apply opacity to non-selected bars when a bar is selected
-        if (this._selectedPriorityCode) {
+        // Apply opacity to non-selected bars when bars are selected
+        if (this._selectedPriorityCodes.length > 0) {
             this.chart.data.datasets[0].backgroundColor = this._chartData.map(d =>
-                d.label === this._selectedPriorityCode ? d.color : this.adjustColorOpacity(d.color, 0.3)
+                this._selectedPriorityCodes.includes(d.label) ? d.color : this.adjustColorOpacity(d.color, 0.3)
             );
         } else {
             this.chart.data.datasets[0].backgroundColor = colors;
@@ -359,10 +359,9 @@ export default class CommandCenterChart extends LightningElement {
             const index = elements[0].index;
             const priorityCode = this._chartData[index]?.label;
             if (priorityCode) {
-                // Toggle: if clicking the same bar, clear the filter
-                const newPriorityCode = priorityCode === this.selectedPriorityCode ? null : priorityCode;
+                // Send the clicked code - parent handles toggle logic for multi-select
                 this.dispatchEvent(new CustomEvent('barclick', {
-                    detail: { priorityCode: newPriorityCode }
+                    detail: { priorityCode }
                 }));
             }
         }

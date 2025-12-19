@@ -5,7 +5,7 @@ import FILTER_CHANNEL from '@salesforce/messageChannel/DashboardFilterChannel__c
 export default class CommandCenterFilterBar extends LightningElement {
     @api filterState = {};
     @api targetUniverseData = [];
-    @api selectedPriorityCode = null;
+    @api selectedPriorityCodes = []; // Multi-select priority codes
     @api legendItems = [];
 
     prioritySeries = [
@@ -72,11 +72,14 @@ export default class CommandCenterFilterBar extends LightningElement {
     }
 
     get hasPriorityCodeFilter() {
-        return this.selectedPriorityCode !== null;
+        return this.selectedPriorityCodes && this.selectedPriorityCodes.length > 0;
     }
 
     get priorityCodeFilterLabel() {
-        return `Priority: ${this.selectedPriorityCode}`;
+        if (!this.selectedPriorityCodes || this.selectedPriorityCodes.length === 0) {
+            return '';
+        }
+        return `Priority: ${this.selectedPriorityCodes.join(', ')}`;
     }
 
     get hasLegendItems() {

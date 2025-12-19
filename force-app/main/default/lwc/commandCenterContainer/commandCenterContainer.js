@@ -36,7 +36,7 @@ export default class CommandCenterContainer extends LightningElement {
     @track isLoading = true;
     @track error = null;
     @track chartType = 'vertical';
-    @track selectedPriorityCode = null;
+    @track selectedPriorityCodes = []; // Multi-select priority codes
     @track chartDisplayMode = 'count'; // 'count' or 'revenue'
 
     // Cache the full status list for filter bar (doesn't change with filters)
@@ -77,13 +77,13 @@ export default class CommandCenterContainer extends LightningElement {
         switch (filterType) {
             case 'prioritySeries':
                 this.filterState = { ...this.filterState, prioritySeries: filterValue };
-                // Clear priority code selection if it's no longer in a visible series
-                if (this.selectedPriorityCode && filterValue.length > 0) {
-                    const codePrefix = this.selectedPriorityCode.charAt(0);
+                // Clear priority code selections if they're no longer in visible series
+                if (this.selectedPriorityCodes.length > 0 && filterValue.length > 0) {
                     const seriesMap = { '5': '500', '6': '600', '7': '700' };
-                    if (!filterValue.includes(seriesMap[codePrefix])) {
-                        this.selectedPriorityCode = null;
-                    }
+                    this.selectedPriorityCodes = this.selectedPriorityCodes.filter(code => {
+                        const codePrefix = code.charAt(0);
+                        return filterValue.includes(seriesMap[codePrefix]);
+                    });
                 }
                 break;
             case 'targetStatuses':
@@ -96,7 +96,14 @@ export default class CommandCenterContainer extends LightningElement {
                 this.chartType = filterValue;
                 return;
             case 'priorityCode':
-                this.selectedPriorityCode = filterValue;
+                // Toggle code in/out of array
+                if (filterValue === null) {
+                    this.selectedPriorityCodes = [];
+                } else if (this.selectedPriorityCodes.includes(filterValue)) {
+                    this.selectedPriorityCodes = this.selectedPriorityCodes.filter(c => c !== filterValue);
+                } else {
+                    this.selectedPriorityCodes = [...this.selectedPriorityCodes, filterValue];
+                }
                 return;
             case 'reset':
                 this.filterState = {
@@ -106,7 +113,7 @@ export default class CommandCenterContainer extends LightningElement {
                     searchTerm: '',
                     top525: false
                 };
-                this.selectedPriorityCode = null;
+                this.selectedPriorityCodes = [];
                 break;
             default:
                 return;
@@ -146,17 +153,28 @@ export default class CommandCenterContainer extends LightningElement {
     }
 
     handleBarClick(event) {
-        this.selectedPriorityCode = event.detail.priorityCode;
+        const code = event.detail.priorityCode;
+        if (code === null) {
+            this.selectedPriorityCodes = [];
+        } else if (this.selectedPriorityCodes.includes(code)) {
+            this.selectedPriorityCodes = this.selectedPriorityCodes.filter(c => c !== code);
+        } else {
+            this.selectedPriorityCodes = [...this.selectedPriorityCodes, code];
+        }
     }
 
     handleClearPriorityFilter() {
-        this.selectedPriorityCode = null;
+        this.selectedPriorityCodes = [];
     }
 
     handlePriorityCodeClickEvent(event) {
         const code = event.detail.code;
-        // Toggle: if clicking the same code, clear the filter
-        this.selectedPriorityCode = code === this.selectedPriorityCode ? null : code;
+        // Toggle code in/out of multi-select array
+        if (this.selectedPriorityCodes.includes(code)) {
+            this.selectedPriorityCodes = this.selectedPriorityCodes.filter(c => c !== code);
+        } else {
+            this.selectedPriorityCodes = [...this.selectedPriorityCodes, code];
+        }
     }
 
     handleRecordUpdate() {
@@ -186,8 +204,8 @@ export default class CommandCenterContainer extends LightningElement {
 
     get filteredAccounts() {
         const accounts = this.dashboardData?.filteredAccounts || [];
-        if (this.selectedPriorityCode) {
-            return accounts.filter(acc => acc.priority === this.selectedPriorityCode);
+        if (this.selectedPriorityCodes.length > 0) {
+            return accounts.filter(acc => this.selectedPriorityCodes.includes(acc.priority));
         }
         return accounts;
     }
@@ -322,7 +340,7 @@ export default class CommandCenterContainer extends LightningElement {
         const series700 = [];
 
         chartData.forEach(item => {
-            const isSelected = this.selectedPriorityCode === item.label;
+            const isSelected = this.selectedPriorityCodes.includes(item.label);
             const legendItem = {
                 code: item.label,
                 color: item.color,
