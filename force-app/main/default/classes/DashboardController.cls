@@ -630,8 +630,8 @@ public with sharing class DashboardController {
             }
             conditions.add('Status__c IN (' + String.join(quotedStatuses, ',') + ')');
         } else {
-            // Default: show all relevant statuses
-            conditions.add('Status__c IN (\'Target A\', \'Target B\', \'Target C\', \'Target D\', \'Customer\', \'Opportunity\', \'Dead\', \'Partner\')');
+            // Default: show all relevant statuses (including null for uncategorized accounts)
+            conditions.add('(Status__c IN (\'Target A\', \'Target B\', \'Target C\', \'Target D\', \'Customer\', \'Opportunity\', \'Dead\', \'Partner\') OR Status__c = null)');
         }
 
         // Priority series filter (D500=500-599, D600=600-699, D700=700-799)
