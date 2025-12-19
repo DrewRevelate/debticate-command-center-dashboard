@@ -650,6 +650,9 @@ public with sharing class DashboardController {
             if (!priorityConditions.isEmpty()) {
                 conditions.add('(' + String.join(priorityConditions, ' OR ') + ')');
             }
+        } else {
+            // Default: When "All" is selected, include D500, D600, D700 series + null priorities
+            conditions.add('((Priority__c >= \'500\' AND Priority__c < \'800\') OR Priority__c = null)');
         }
 
         // Engagement status filter

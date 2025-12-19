@@ -199,20 +199,24 @@ export default class CommandCenterContainer extends LightningElement {
     }
 
     get kpiSummary() {
-        // Compute KPI from chartData to ensure consistency with displayed chart
-        const chartData = this.chartData;
-        if (!chartData || chartData.length === 0) {
-            return this.dashboardData?.kpiSummary || null;
+        // When specific priority codes are selected, compute from chartData
+        // Otherwise, use Apex kpiSummary which includes null Priority accounts
+        if (this.selectedPriorityCodes.length > 0) {
+            const chartData = this.chartData;
+            if (!chartData || chartData.length === 0) {
+                return this.dashboardData?.kpiSummary || null;
+            }
+            // Filter chartData to only selected priority codes
+            const filtered = chartData.filter(item =>
+                this.selectedPriorityCodes.includes(item.label)
+            );
+            const totalAccounts = filtered.reduce((sum, item) => sum + (item.value || 0), 0);
+            const totalAssets = filtered.reduce((sum, item) => sum + (item.assets || 0), 0);
+            return { totalAccounts, totalAssets };
         }
 
-        // Sum up counts and assets from the filtered chart data
-        const totalAccounts = chartData.reduce((sum, item) => sum + (item.value || 0), 0);
-        const totalAssets = chartData.reduce((sum, item) => sum + (item.assets || 0), 0);
-
-        return {
-            totalAccounts,
-            totalAssets
-        };
+        // Use Apex kpiSummary for "All" view - includes null Priority accounts
+        return this.dashboardData?.kpiSummary || null;
     }
 
     get filteredAccounts() {
