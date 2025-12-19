@@ -217,9 +217,12 @@ public with sharing class DashboardController {
             'Target C' => '#5867E8',  // Indigo
             'Target D' => '#7F8DE1',  // Light Indigo
             'Customer' => '#2E844A',  // Success Green
+            'Customer - Lost' => '#BA0517', // Red for lost
             'Opportunity' => '#C87F17', // Muted Gold
             'Dead' => '#706E6B',      // Neutral Gray
-            'Partner' => '#8A68C5'    // Professional Purple
+            'Partner' => '#8A68C5',   // Professional Purple
+            'Interest' => '#F59E0B',  // Amber for interest
+            'Unassigned' => '#94A3B8' // Slate gray for unassigned
         };
         return colorMap.get(status) != null ? colorMap.get(status) : '#939393';
     }
@@ -704,17 +707,15 @@ public with sharing class DashboardController {
         Map<String, Integer> statusCounts = new Map<String, Integer>();
 
         for (Account acc : accounts) {
-            String status = acc.Status__c;
-            if (status != null) {
-                Integer count = statusCounts.get(status);
-                statusCounts.put(status, count == null ? 1 : count + 1);
-            }
+            String status = acc.Status__c != null ? acc.Status__c : 'Unassigned';
+            Integer count = statusCounts.get(status);
+            statusCounts.put(status, count == null ? 1 : count + 1);
         }
 
         // Build results in predefined order
         List<String> statusOrder = new List<String>{
             'Target A', 'Target B', 'Target C', 'Target D',
-            'Customer', 'Opportunity', 'Dead', 'Partner'
+            'Customer', 'Customer - Lost', 'Opportunity', 'Dead', 'Partner', 'Interest', 'Unassigned'
         };
 
         List<TargetData> results = new List<TargetData>();

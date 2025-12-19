@@ -341,6 +341,21 @@
     color: #8A68C5;
 }
 
+.status-customer-lost {
+    background: #FFEBEE;
+    color: #BA0517;
+}
+
+.status-interest {
+    background: #FFF8E1;
+    color: #F59E0B;
+}
+
+.status-unassigned {
+    background: #F1F5F9;
+    color: #64748B;
+}
+
 /* Priority Code */
 .priority-code {
     font-family: 'Salesforce Sans', Arial, sans-serif;

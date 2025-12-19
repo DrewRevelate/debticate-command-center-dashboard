@@ -27,9 +27,11 @@ const STATUS_OPTIONS = [
     { label: 'Target C', value: 'Target C' },
     { label: 'Target D', value: 'Target D' },
     { label: 'Customer', value: 'Customer' },
+    { label: 'Customer - Lost', value: 'Customer - Lost' },
     { label: 'Opportunity', value: 'Opportunity' },
     { label: 'Dead', value: 'Dead' },
-    { label: 'Partner', value: 'Partner' }
+    { label: 'Partner', value: 'Partner' },
+    { label: 'Interest', value: 'Interest' }
 ];
 
 const PRIORITY_OPTIONS = Object.entries(PRIORITY_LABELS).map(([value, label]) => ({
@@ -163,16 +165,19 @@ export default class CommandCenterAccountTable extends NavigationMixin(Lightning
     }
 
     getStatusClass(status) {
-        if (!status) return 'status-badge';
+        if (!status) return 'status-badge status-unassigned';
         const statusMap = {
             'Customer': 'status-badge status-customer',
+            'Customer - Lost': 'status-badge status-customer-lost',
             'Dead': 'status-badge status-dead',
             'Opportunity': 'status-badge status-opportunity',
             'Target A': 'status-badge status-target-a',
             'Target B': 'status-badge status-target-b',
             'Target C': 'status-badge status-target-c',
             'Target D': 'status-badge status-target-d',
-            'Partner': 'status-badge status-partner'
+            'Partner': 'status-badge status-partner',
+            'Interest': 'status-badge status-interest',
+            'Unassigned': 'status-badge status-unassigned'
         };
         return statusMap[status] || 'status-badge';
     }
