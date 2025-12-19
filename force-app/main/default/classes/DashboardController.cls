@@ -631,7 +631,7 @@ public with sharing class DashboardController {
             conditions.add('Status__c IN (' + String.join(quotedStatuses, ',') + ')');
         } else {
             // Default: show all relevant statuses (including null for uncategorized accounts)
-            conditions.add('(Status__c IN (\'Target A\', \'Target B\', \'Target C\', \'Target D\', \'Customer\', \'Opportunity\', \'Dead\', \'Partner\') OR Status__c = null)');
+            conditions.add('(Status__c IN (\'Target A\', \'Target B\', \'Target C\', \'Target D\', \'Customer\', \'Customer - Lost\', \'Opportunity\', \'Dead\', \'Partner\', \'Interest\') OR Status__c = null)');
         }
 
         // Priority series filter (D500=500-599, D600=600-699, D700=700-799)
@@ -650,10 +650,8 @@ public with sharing class DashboardController {
             if (!priorityConditions.isEmpty()) {
                 conditions.add('(' + String.join(priorityConditions, ' OR ') + ')');
             }
-        } else {
-            // Default: When "All" is selected, include D500, D600, D700 series + null priorities
-            conditions.add('((Priority__c >= \'500\' AND Priority__c < \'800\') OR Priority__c = null)');
         }
+        // When "All" is selected (empty prioritySeries), no Priority filter - include all accounts
 
         // Engagement status filter
         if (filters != null && filters.engagementStatus != null && filters.engagementStatus != '') {
