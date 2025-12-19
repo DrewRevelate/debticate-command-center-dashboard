@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PE_RE_Fund_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>contact works at a private equity real estate fund or fund manager or in that field</description>
+    <label>PE RE Fund Contact</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

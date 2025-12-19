@@ -1,0 +1,25 @@
+<template>
+    <div class="kpi-row">
+        <!-- Record Count KPI -->
+        <div class={countCardClass} onclick={handleCountClick} role="button" tabindex="0">
+            <div class="kpi-label">Record Count</div>
+            <template if:true={isLoading}>
+                <div class="kpi-value shimmer">—</div>
+            </template>
+            <template if:false={isLoading}>
+                <div class="kpi-value">{totalAccounts}</div>
+            </template>
+        </div>
+
+        <!-- Total Revenue KPI -->
+        <div class={revenueCardClass} onclick={handleRevenueClick} role="button" tabindex="0">
+            <div class="kpi-label">Total Revenue</div>
+            <template if:true={isLoading}>
+                <div class="kpi-value shimmer">—</div>
+            </template>
+            <template if:false={isLoading}>
+                <div class="kpi-value">{totalAssets}</div>
+            </template>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,149 @@
+/* Command Center Status Table - CRM Analytics Style */
+:host {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.status-table-container {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Table Header */
+.table-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E6ECF2;
+    background: #FAFBFC;
+    border-radius: 8px 8px 0 0;
+}
+
+.table-title {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #16325C;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* Table Base */
+.status-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.status-table thead {
+    background: #F3F3F3;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.status-table th {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #706E6B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #E6ECF2;
+    white-space: nowrap;
+}
+
+.status-table td {
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid #F3F3F3;
+    color: #3E3E3C;
+}
+
+.status-table tbody tr:hover {
+    background: #FAFBFC;
+}
+
+.status-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Column Widths */
+.col-status {
+    width: 60%;
+}
+
+.col-revenue {
+    width: 40%;
+    text-align: right;
+}
+
+.status-table th.col-revenue {
+    text-align: right;
+}
+
+/* Status Column */
+.status-text {
+    font-weight: 400;
+    color: #3E3E3C;
+}
+
+/* Revenue Value */
+.revenue-value {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    font-weight: 400;
+    color: #3E3E3C;
+    font-variant-numeric: tabular-nums;
+}
+
+/* No Data State */
+.no-data {
+    text-align: center;
+    color: #706E6B;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Scrollbar Styling */
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #C9C9C9;
+    border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #ABABAB;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .status-table th,
+    .status-table td {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .table-header {
+        padding: 0.5rem 0.75rem;
+    }
+}

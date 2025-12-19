@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dashboard Filter Channel</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Cross-component filter state communication for Debticate Command Center</description>
+    <lightningMessageFields>
+        <fieldName>filterType</fieldName>
+        <description>Type of filter change: targetStatuses, prioritySeries, engagementStatus, dateRange, reset, dataUpdate</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>filterValue</fieldName>
+        <description>The filter value - string, array, or object depending on filterType</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>source</fieldName>
+        <description>Component that initiated the filter change</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>fullFilterState</fieldName>
+        <description>Complete filter state object for synchronization</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

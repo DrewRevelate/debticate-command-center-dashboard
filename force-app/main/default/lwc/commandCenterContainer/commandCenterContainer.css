@@ -1,0 +1,150 @@
+/* Command Center Container - Main Styles */
+:host {
+    /* Brand Colors */
+    --cc-header-bg: #1B2A47;
+    --cc-body-bg: #F3F3F3;
+    --cc-card-bg: #FFFFFF;
+    --cc-border-color: #E6ECF2;
+
+    /* Status Colors - Professional enterprise palette */
+    --cc-target-a: #0176D3;
+    --cc-target-b: #0D9DDA;
+    --cc-target-c: #5867E8;
+    --cc-target-d: #7F8DE1;
+    --cc-customer: #2E844A;
+    --cc-opportunity: #C87F17;
+    --cc-dead: #706E6B;
+    --cc-partner: #8A68C5;
+
+    /* Chart Series Colors */
+    --cc-series-500: #3b82f6;
+    --cc-series-510: #0891b2;
+    --cc-series-550: #10b981;
+    --cc-series-600: #8b5cf6;
+    --cc-series-700: #ef4444;
+
+    /* Typography */
+    --cc-kpi-font-size: 2.5rem;
+    --cc-kpi-font-weight: 700;
+    --cc-heading-color: #16325c;
+    --cc-text-color: #3e3e3c;
+    --cc-text-muted: #706e6b;
+
+    /* Spacing */
+    --cc-section-gap: 1rem;
+    --cc-card-padding: 1.25rem;
+    --cc-card-radius: 8px;
+
+    /* Shadows */
+    --cc-card-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+
+    display: block;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.command-center-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: var(--cc-body-bg);
+    overflow: hidden;
+}
+
+.main-content {
+    flex: 1 1 0;
+    padding: var(--cc-section-gap);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cc-section-gap);
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Loading State */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    background: var(--cc-card-bg);
+    border-radius: var(--cc-card-radius);
+    box-shadow: var(--cc-card-shadow);
+}
+
+/* Error State */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem;
+    background: var(--cc-card-bg);
+    border-radius: var(--cc-card-radius);
+    box-shadow: var(--cc-card-shadow);
+    text-align: center;
+}
+
+.error-message {
+    color: #c23934;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Chart Section - Card Style */
+.chart-section {
+    background: var(--cc-card-bg);
+    padding: var(--cc-card-padding);
+    min-height: 280px;
+    max-height: 350px;
+    overflow: hidden;
+    border-radius: var(--cc-card-radius);
+    box-shadow: var(--cc-card-shadow);
+}
+
+/* Tables Section - Card Style */
+.tables-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    gap: var(--cc-section-gap);
+    flex: 1 1 auto;
+    min-height: 300px;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.table-left {
+    background: var(--cc-card-bg);
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--cc-card-radius);
+    box-shadow: var(--cc-card-shadow);
+}
+
+.table-right {
+    background: var(--cc-card-bg);
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--cc-card-radius);
+    box-shadow: var(--cc-card-shadow);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .tables-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 0.75rem;
+    }
+
+    :host {
+        --cc-kpi-font-size: 1.75rem;
+        --cc-card-padding: 1rem;
+    }
+}

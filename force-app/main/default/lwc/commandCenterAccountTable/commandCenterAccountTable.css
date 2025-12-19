@@ -1,0 +1,415 @@
+/* Command Center Account Table - CRM Analytics Style */
+:host {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.account-table-container {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Table Header */
+.table-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E6ECF2;
+    background: #FAFBFC;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 8px 8px 0 0;
+}
+
+.table-title {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #16325C;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.filter-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #0176D3;
+    background: #EEF4FF;
+    padding: 0.125rem 0.5rem;
+    border-radius: 3px;
+}
+
+.header-actions {
+    margin-left: auto;
+}
+
+/* Edit Toggle Button */
+.edit-toggle-btn,
+.done-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid;
+}
+
+.edit-toggle-btn {
+    background: #FFFFFF;
+    border-color: #C9C9C9;
+    color: #3E3E3C;
+}
+
+.edit-toggle-btn:hover {
+    background: #F3F3F3;
+    border-color: #0176D3;
+    color: #0176D3;
+}
+
+.done-btn {
+    background: #0176D3;
+    border-color: #0176D3;
+    color: #FFFFFF;
+}
+
+.done-btn:hover {
+    background: #014486;
+    border-color: #014486;
+}
+
+.edit-toggle-btn svg,
+.done-btn svg {
+    flex-shrink: 0;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* Table Base */
+.account-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.account-table thead {
+    background: #F3F3F3;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.account-table th {
+    padding: 0;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #706E6B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #E6ECF2;
+    white-space: nowrap;
+}
+
+/* Sortable Header Buttons */
+.sortable {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    font-weight: 700;
+    transition: color 0.15s ease;
+}
+
+.sortable:hover {
+    color: #16325C;
+}
+
+.sortable:hover .sort-icon::before {
+    opacity: 0.5;
+}
+
+/* Sort Icon */
+.sort-icon {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1px;
+    opacity: 0.4;
+    transition: opacity 0.15s ease;
+}
+
+.sort-icon::before,
+.sort-icon::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.sort-icon::before {
+    border-bottom: 4px solid currentColor;
+}
+
+.sort-icon::after {
+    border-top: 4px solid currentColor;
+}
+
+/* Active sort states */
+.sorted-asc .sort-icon,
+.sorted-desc .sort-icon {
+    opacity: 1;
+}
+
+.sorted-asc .sort-icon::after {
+    opacity: 0.3;
+}
+
+.sorted-desc .sort-icon::before {
+    opacity: 0.3;
+}
+
+.account-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #F3F3F3;
+    color: #3E3E3C;
+    vertical-align: middle;
+}
+
+.account-table tbody tr {
+    transition: background 0.1s ease;
+}
+
+.account-table tbody tr:hover {
+    background: #FAFBFC;
+}
+
+.account-table tbody tr.highlighted {
+    background: #FFF8E6;
+}
+
+.account-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Column Widths */
+.col-name {
+    width: 28%;
+    min-width: 160px;
+}
+
+.col-revenue {
+    width: 14%;
+    text-align: right;
+}
+
+.account-table th.col-revenue {
+    text-align: right;
+}
+
+.col-status {
+    width: 14%;
+}
+
+.col-priority {
+    width: 10%;
+    text-align: center;
+}
+
+.account-table th.col-priority {
+    text-align: center;
+}
+
+.col-description {
+    width: 34%;
+}
+
+/* Account Link */
+.account-link {
+    color: #0176D3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.account-link:hover {
+    text-decoration: underline;
+}
+
+/* Revenue Value */
+.revenue-value {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    font-weight: 400;
+    color: #3E3E3C;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    background: #F3F3F3;
+    color: #3E3E3C;
+}
+
+/* Inline Select */
+.inline-select {
+    width: 100%;
+    max-width: 140px;
+    padding: 0.25rem 0.375rem;
+    font-size: 0.6875rem;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    border: 1px solid #C9C9C9;
+    border-radius: 3px;
+    background: #FFFFFF;
+    color: #16325C;
+    cursor: pointer;
+    outline: none;
+}
+
+.inline-select:focus {
+    border-color: #0176D3;
+    box-shadow: 0 0 0 2px rgba(1, 118, 211, 0.15);
+}
+
+.inline-select-priority {
+    max-width: 200px;
+}
+
+.status-customer {
+    background: #E8F5E9;
+    color: #2E844A;
+}
+
+.status-dead {
+    background: #F3F3F3;
+    color: #706E6B;
+}
+
+.status-opportunity {
+    background: #FFF4E5;
+    color: #C87F17;
+}
+
+.status-target-a {
+    background: #E3F2FD;
+    color: #0176D3;
+}
+
+.status-target-b {
+    background: #E0F7FA;
+    color: #0D9DDA;
+}
+
+.status-target-c {
+    background: #EDE7F6;
+    color: #5867E8;
+}
+
+.status-target-d {
+    background: #F3E8FF;
+    color: #7F8DE1;
+}
+
+.status-partner {
+    background: #F3E5F5;
+    color: #8A68C5;
+}
+
+/* Priority Code */
+.priority-code {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    font-weight: 700;
+    color: #16325C;
+    font-size: 0.8125rem;
+}
+
+/* Priority Description */
+.priority-desc {
+    color: #706E6B;
+    font-size: 0.75rem;
+}
+
+/* No Data State */
+.no-data {
+    text-align: center;
+    color: #706E6B;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Scrollbar Styling */
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #C9C9C9;
+    border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #ABABAB;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .account-table th,
+    .account-table td {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .table-header {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .col-description {
+        display: none;
+    }
+
+    .col-name {
+        width: 35%;
+    }
+
+    .col-revenue {
+        width: 20%;
+    }
+
+    .col-status {
+        width: 25%;
+    }
+
+    .col-priority {
+        width: 20%;
+    }
+}

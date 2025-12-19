@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Property_type__c</fullName>
+    <label>Property type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Residential 1-4 OO</fullName>
+                <default>false</default>
+                <label>Residential 1-4 OO</label>
+            </value>
+            <value>
+                <fullName>Residential 1-4 INV</fullName>
+                <default>false</default>
+                <label>Residential 1-4 INV</label>
+            </value>
+            <value>
+                <fullName>Multifamily</fullName>
+                <default>false</default>
+                <label>Multifamily</label>
+            </value>
+            <value>
+                <fullName>Hospitality</fullName>
+                <default>false</default>
+                <label>Hospitality</label>
+            </value>
+            <value>
+                <fullName>Industrial</fullName>
+                <default>false</default>
+                <label>Industrial</label>
+            </value>
+            <value>
+                <fullName>Mixed Use</fullName>
+                <default>false</default>
+                <label>Mixed Use</label>
+            </value>
+            <value>
+                <fullName>Office</fullName>
+                <default>false</default>
+                <label>Office</label>
+            </value>
+            <value>
+                <fullName>Retail</fullName>
+                <default>false</default>
+                <label>Retail</label>
+            </value>
+            <value>
+                <fullName>Special Purpose</fullName>
+                <default>false</default>
+                <label>Special Purpose</label>
+            </value>
+            <value>
+                <fullName>Land</fullName>
+                <default>false</default>
+                <label>Land</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

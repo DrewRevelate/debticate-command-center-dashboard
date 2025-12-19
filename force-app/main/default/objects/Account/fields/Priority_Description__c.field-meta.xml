@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority_Description__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( Priority__c,
+/* 500 Series - Top 525 Banks */
+&quot;500&quot;, &quot;Needs engagement and qualification (Top 525 Banks)&quot;,
+&quot;501&quot;, &quot;Customers&quot;,
+&quot;502&quot;, &quot;Existing Opportunity/Handoff Accounts&quot;,
+&quot;503&quot;, &quot;Customer - Lost&quot;,
+&quot;510&quot;, &quot;In qualification cadence&quot;,
+&quot;511&quot;, &quot;Cadenced in monthly&quot;,
+&quot;512&quot;, &quot;Cadenced in quarterly&quot;,
+&quot;513&quot;, &quot;Cadenced in Long Drip&quot;,
+&quot;553&quot;, &quot;No Response Pool&quot;,
+&quot;554&quot;, &quot;Dead for now...&quot;,
+&quot;555&quot;, &quot;Truly dead account&quot;,
+
+/* 600 Series - Non Banks */
+&quot;600&quot;, &quot;Needs engagement and qualification (Non Banks)&quot;,
+&quot;601&quot;, &quot;Customers (Farm Credits/Direct Lenders/PE)&quot;,
+&quot;602&quot;, &quot;Existing Opportunity/Handoff Accounts&quot;,
+&quot;603&quot;, &quot;Customer - Lost&quot;,
+&quot;610&quot;, &quot;In qualification cadence (Credit Unions/CUSOs)&quot;,
+&quot;611&quot;, &quot;Cadenced in monthly&quot;,
+&quot;612&quot;, &quot;Cadenced in quarterly&quot;,
+&quot;613&quot;, &quot;Cadenced in Long Drip&quot;,
+&quot;653&quot;, &quot;No Response Pool&quot;,
+&quot;654&quot;, &quot;Dead for now...&quot;,
+&quot;666&quot;, &quot;Truly dead account&quot;,
+
+/* 700 Series - Other Banks and International Banks */
+&quot;700&quot;, &quot;Needs engagement and qualification (Other Banks and Intl)&quot;,
+&quot;701&quot;, &quot;Customers&quot;,
+&quot;702&quot;, &quot;Existing Opportunity/Handoff Accounts&quot;,
+&quot;710&quot;, &quot;In qualification cadence&quot;,
+&quot;711&quot;, &quot;Cadenced in monthly&quot;,
+&quot;712&quot;, &quot;Cadenced in quarterly&quot;,
+&quot;713&quot;, &quot;Cadenced in Long Drip&quot;,
+&quot;752&quot;, &quot;International - dead for now&quot;,
+&quot;753&quot;, &quot;No Response Pool&quot;,
+&quot;754&quot;, &quot;Dead for now...&quot;,
+&quot;777&quot;, &quot;Truly dead account&quot;,
+
+/* Default */
+&quot;&quot;)</formula>
+    <label>Priority Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

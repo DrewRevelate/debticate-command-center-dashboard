@@ -1,0 +1,65 @@
+{
+  "name": "ExecutiveCommandCenterDashboard_tp",
+  "label": "Executive Command Center - Bill Huschle",
+  "description": "Master executive dashboard for D500 Top Banks analysis",
+  "folder": {
+    "id": "${App.Folder.Id}"
+  },
+  "dateVersion": 1,
+  "mobileDisabled": false,
+  "state": {
+    "dataSourceLinksInfo": {
+      "enableAutomaticLinking": true,
+      "links": []
+    },
+    "filters": [],
+    "gridLayouts": [
+      {
+        "name": "Default",
+        "numColumns": 12,
+        "pages": [
+          {
+            "label": "D500 Command Center",
+            "name": "page_main",
+            "widgets": [
+              { "colspan": 12, "column": 0, "name": "header_text", "row": 0, "rowspan": 3 }
+            ]
+          }
+        ],
+        "rowHeight": "normal",
+        "selectors": [],
+        "style": {
+          "backgroundColor": "#1B2A47",
+          "cellSpacingX": 8,
+          "cellSpacingY": 8,
+          "gutterColor": "#16253D"
+        },
+        "version": 1.0
+      }
+    ],
+    "layouts": [],
+    "steps": {},
+    "widgetStyle": {
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#E6ECF2",
+      "borderRadius": 4,
+      "borderWidth": 1
+    },
+    "widgets": {
+      "header_text": {
+        "parameters": {
+          "content": {
+            "richTextContent": [
+              { "attributes": { "size": "32px", "color": "#FFFFFF", "bold": true }, "insert": "Executive Command Center" },
+              { "insert": "\n" },
+              { "attributes": { "size": "14px", "color": "#A0AEC0" }, "insert": "D500 Top Banks Universe | Bill Huschle | Add charts in CRM Analytics Studio" },
+              { "insert": "\n" }
+            ]
+          },
+          "showActionMenu": false
+        },
+        "type": "text"
+      }
+    }
+  }
+}

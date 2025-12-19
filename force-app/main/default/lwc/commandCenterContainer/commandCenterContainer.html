@@ -1,0 +1,76 @@
+<template>
+    <div class="command-center-container">
+        <!-- Filter Bar -->
+        <c-command-center-filter-bar
+            filter-state={filterState}
+            target-universe-data={targetUniverseData}
+            selected-priority-code={selectedPriorityCode}
+            legend-items={legendItems}
+            onclearpriority={handleClearPriorityFilter}
+            onprioritycodeclick={handlePriorityCodeClickEvent}>
+        </c-command-center-filter-bar>
+
+        <!-- KPI Row -->
+        <c-command-center-kpi-row
+            kpi-data={kpiSummary}
+            is-loading={isLoading}
+            display-mode={chartDisplayMode}
+            ondisplaymodechange={handleDisplayModeChange}>
+        </c-command-center-kpi-row>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <div class="loading-container">
+                    <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Error State -->
+            <template if:true={error}>
+                <div class="error-container">
+                    <lightning-icon icon-name="utility:error" variant="error" size="medium"></lightning-icon>
+                    <p class="error-message">{error}</p>
+                    <lightning-button label="Retry" onclick={loadDashboardData}></lightning-button>
+                </div>
+            </template>
+
+            <!-- Dashboard Content -->
+            <template if:false={isLoading}>
+                <template if:false={error}>
+                    <!-- Chart Section -->
+                    <div class="chart-section">
+                        <c-command-center-chart
+                            chart-type={chartType}
+                            chart-data={chartData}
+                            display-mode={chartDisplayMode}
+                            selected-priority-code={selectedPriorityCode}
+                            onbarclick={handleBarClick}
+                            oncharttypechange={handleChartTypeChange}>
+                        </c-command-center-chart>
+                    </div>
+
+                    <!-- Data Tables Section -->
+                    <div class="tables-section">
+                        <div class="table-left">
+                            <c-command-center-status-table
+                                status-data={statusSummaryData}>
+                            </c-command-center-status-table>
+                        </div>
+                        <div class="table-right">
+                            <c-command-center-account-table
+                                accounts={filteredAccounts}
+                                selected-priority-code={selectedPriorityCode}
+                                onrecordupdate={handleRecordUpdate}>
+                            </c-command-center-account-table>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+
+        <!-- Footer -->
+        <c-command-center-footer></c-command-center-footer>
+    </div>
+</template>

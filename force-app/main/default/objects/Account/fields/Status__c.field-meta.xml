@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer</fullName>
+                <default>false</default>
+                <label>Customer</label>
+            </value>
+            <value>
+                <fullName>Customer - Lost</fullName>
+                <default>false</default>
+                <label>Customer - Lost</label>
+            </value>
+            <value>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+                <label>Opportunity</label>
+            </value>
+            <value>
+                <fullName>Target A</fullName>
+                <default>false</default>
+                <label>Target A</label>
+            </value>
+            <value>
+                <fullName>Target B</fullName>
+                <default>false</default>
+                <label>Target B</label>
+            </value>
+            <value>
+                <fullName>Target C</fullName>
+                <default>false</default>
+                <label>Target C</label>
+            </value>
+            <value>
+                <fullName>Target D</fullName>
+                <default>false</default>
+                <label>Target D</label>
+            </value>
+            <value>
+                <fullName>Dead</fullName>
+                <default>false</default>
+                <label>Dead</label>
+            </value>
+            <value>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <label>Partner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

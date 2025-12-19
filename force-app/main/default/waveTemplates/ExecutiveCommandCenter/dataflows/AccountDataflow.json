@@ -1,0 +1,77 @@
+{
+  "workflowDefinition": {
+    "version": "57.0",
+    "extract_accounts": {
+      "action": "sfdcDigest",
+      "parameters": {
+        "object": "Account",
+        "fields": [
+          { "name": "Id" },
+          { "name": "Name" },
+          { "name": "Priority__c" },
+          { "name": "Priority_Description__c" },
+          { "name": "Priority_Group__c" },
+          { "name": "Target__c" },
+          { "name": "Target_Type__c" },
+          { "name": "Total_Assets__c" },
+          { "name": "Annual_Revenue_Est__c" },
+          { "name": "In_Deals__c" },
+          { "name": "Allocated__c" },
+          { "name": "Declined_Pass__c" },
+          { "name": "Other_Deals__c" },
+          { "name": "Deals_Year__c" },
+          { "name": "Agency_Deals_Year__c" },
+          { "name": "Last_Attempt__c" },
+          { "name": "Last_Reach__c" },
+          { "name": "Industry" },
+          { "name": "BillingState" },
+          { "name": "Website" },
+          { "name": "OwnerId" }
+        ]
+      }
+    },
+    "add_series_label": {
+      "action": "computeExpression",
+      "parameters": {
+        "source": "extract_accounts",
+        "mergeWithSource": true,
+        "computedFields": [
+          {
+            "name": "Priority_Series",
+            "saqlExpression": "case when 'Priority__c' >= \"500\" && 'Priority__c' < \"600\" then \"D500 - Top Banks\" when 'Priority__c' >= \"600\" && 'Priority__c' < \"700\" then \"D600 - Non-Banks\" when 'Priority__c' >= \"700\" && 'Priority__c' < \"800\" then \"D700 - Other Banks\" else \"Uncategorized\" end",
+            "type": "Text"
+          },
+          {
+            "name": "Priority_Status",
+            "saqlExpression": "case when substr('Priority__c', 2, 2) == \"00\" then \"Needs Engagement\" when substr('Priority__c', 2, 2) == \"01\" then \"Customer\" when substr('Priority__c', 2, 2) == \"02\" then \"Has Active Opp\" when substr('Priority__c', 2, 2) == \"03\" then \"Former Customer\" when substr('Priority__c', 2, 2) == \"10\" then \"In Qualification\" when substr('Priority__c', 2, 2) == \"11\" then \"Monthly Cadence\" when substr('Priority__c', 2, 2) == \"12\" then \"Quarterly Cadence\" when substr('Priority__c', 2, 2) == \"13\" then \"Long Drip\" when substr('Priority__c', 2, 2) == \"53\" then \"No Response Pool\" when substr('Priority__c', 2, 2) == \"54\" then \"Dead for Now\" when substr('Priority__c', 2, 2) == \"55\" then \"Truly Dead\" else \"Other\" end",
+            "type": "Text"
+          },
+          {
+            "name": "Target_Category",
+            "saqlExpression": "case when 'Target_Type__c' like \"%A%\" then \"Target A - Active Syndication\" when 'Target_Type__c' like \"%B%\" then \"Target B - High Volume\" when 'Target_Type__c' like \"%C%\" then \"Target C - Low Volume\" when 'Target_Type__c' like \"%D%\" then \"Target D - Tracking\" else \"Unclassified\" end",
+            "type": "Text"
+          },
+          {
+            "name": "Has_Deals",
+            "saqlExpression": "case when 'In_Deals__c' > 0 then \"Yes\" else \"No\" end",
+            "type": "Text"
+          },
+          {
+            "name": "Engagement_Status",
+            "saqlExpression": "case when 'Last_Reach__c' >= now() - 30 then \"Active (30 days)\" when 'Last_Reach__c' >= now() - 90 then \"Recent (90 days)\" when 'Last_Reach__c' >= now() - 180 then \"Stale (180 days)\" when 'Last_Reach__c' is not null then \"Cold (>180 days)\" else \"Never Contacted\" end",
+            "type": "Text"
+          }
+        ]
+      }
+    },
+    "register_account_dataset": {
+      "action": "sfdcRegister",
+      "parameters": {
+        "source": "add_series_label",
+        "name": "D500_Account_Universe",
+        "alias": "D500_Account_Universe",
+        "label": "D500 Account Universe"
+      }
+    }
+  }
+}

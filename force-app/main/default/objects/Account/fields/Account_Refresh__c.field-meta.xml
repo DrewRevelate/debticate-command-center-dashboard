@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Refresh__c</fullName>
+    <description>Date of the most recent Account Refresh</description>
+    <inlineHelpText>Should be updated only when you have a conversation/meeting with one or more of the Account Primary Contacts.</inlineHelpText>
+    <label>Account Refresh</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bounced_email__c</fullName>
+    <description>Salesforce bounced email indicator</description>
+    <externalId>false</externalId>
+    <formula>EmailBouncedReason</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This field is checked automatically when Salesforce detects that an email sent through Salesforce has bounced.</inlineHelpText>
+    <label>Bounced email</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

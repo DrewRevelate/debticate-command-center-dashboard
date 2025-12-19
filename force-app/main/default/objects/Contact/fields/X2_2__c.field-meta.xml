@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X2_2__c</fullName>
+    <description>Captures each contact&apos;s level of enthusiasm for the product.</description>
+    <inlineHelpText>+2: Vocal advocate for the product and can be relied upon as an evangelist
++1: Leans Positive 
+0: Neutral 
+-1: Leans Negative
+-2: Vocal Antagonist</inlineHelpText>
+    <label>+2 / -2</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>+2</fullName>
+                <default>false</default>
+                <label>+2</label>
+            </value>
+            <value>
+                <fullName>+1</fullName>
+                <default>false</default>
+                <label>+1</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>0</label>
+            </value>
+            <value>
+                <fullName>-1</fullName>
+                <default>false</default>
+                <label>-1</label>
+            </value>
+            <value>
+                <fullName>-2</fullName>
+                <default>false</default>
+                <label>-2</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

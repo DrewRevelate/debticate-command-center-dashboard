@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Modern_Funding__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Check if this is a MF Opportunity</description>
+    <inlineHelpText>Check if this is a MF Opportunity</inlineHelpText>
+    <label>Modern Funding?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

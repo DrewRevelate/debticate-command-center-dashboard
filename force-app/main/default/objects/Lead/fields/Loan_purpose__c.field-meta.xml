@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loan_purpose__c</fullName>
+    <label>Loan purpose</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Acquisition</fullName>
+                <default>true</default>
+                <label>Acquisition</label>
+            </value>
+            <value>
+                <fullName>Refinance</fullName>
+                <default>false</default>
+                <label>Refinance</label>
+            </value>
+            <value>
+                <fullName>Ground up construction</fullName>
+                <default>false</default>
+                <label>Ground up construction</label>
+            </value>
+            <value>
+                <fullName>Repositioning</fullName>
+                <default>false</default>
+                <label>Repositioning</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

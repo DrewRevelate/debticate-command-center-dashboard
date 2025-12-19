@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Acq_Preference__c</fullName>
+    <label>Acq Preferences</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NPL</fullName>
+                <default>false</default>
+                <label>NPL</label>
+            </value>
+            <value>
+                <fullName>Performing</fullName>
+                <default>false</default>
+                <label>Performing</label>
+            </value>
+            <value>
+                <fullName>Equity</fullName>
+                <default>false</default>
+                <label>Equity</label>
+            </value>
+            <value>
+                <fullName>Residential</fullName>
+                <default>false</default>
+                <label>Residential</label>
+            </value>
+            <value>
+                <fullName>CRE</fullName>
+                <default>false</default>
+                <label>CRE</label>
+            </value>
+            <value>
+                <fullName>Unsecured</fullName>
+                <default>false</default>
+                <label>Unsecured</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

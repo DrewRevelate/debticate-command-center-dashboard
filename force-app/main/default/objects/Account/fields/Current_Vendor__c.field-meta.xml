@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Vendor__c</fullName>
+    <description>Incumbent vendors</description>
+    <label>Current Vendor</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Nothing Installed</fullName>
+                <default>false</default>
+                <label>Nothing Installed</label>
+            </value>
+            <value>
+                <fullName>DebtX</fullName>
+                <default>false</default>
+                <label>DebtX</label>
+            </value>
+            <value>
+                <fullName>IntraLinks</fullName>
+                <default>false</default>
+                <label>IntraLinks</label>
+            </value>
+            <value>
+                <fullName>SyndTrak</fullName>
+                <default>false</default>
+                <label>SyndTrak</label>
+            </value>
+            <value>
+                <fullName>DebtDomain</fullName>
+                <default>false</default>
+                <label>DebtDomain</label>
+            </value>
+            <value>
+                <fullName>LoanStream</fullName>
+                <default>false</default>
+                <label>LoanStream</label>
+            </value>
+            <value>
+                <fullName>Participate</fullName>
+                <default>false</default>
+                <label>Participate</label>
+            </value>
+            <value>
+                <fullName>Synply</fullName>
+                <default>false</default>
+                <label>Synply</label>
+            </value>
+            <value>
+                <fullName>Sharefile</fullName>
+                <default>false</default>
+                <label>Sharefile</label>
+            </value>
+            <value>
+                <fullName>Secure Email</fullName>
+                <default>false</default>
+                <label>Secure Email</label>
+            </value>
+            <value>
+                <fullName>ACBS</fullName>
+                <default>false</default>
+                <label>ACBS</label>
+            </value>
+            <value>
+                <fullName>LoanIQ</fullName>
+                <default>false</default>
+                <label>LoanIQ</label>
+            </value>
+            <value>
+                <fullName>AFS Vision</fullName>
+                <default>false</default>
+                <label>AFS Vision</label>
+            </value>
+            <value>
+                <fullName>Jack Henry</fullName>
+                <default>false</default>
+                <label>Jack Henry</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

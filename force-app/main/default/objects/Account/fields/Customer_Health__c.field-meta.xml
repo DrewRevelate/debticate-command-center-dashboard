@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Health__c</fullName>
+    <label>Customer Health</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Green</fullName>
+                <color>#009900</color>
+                <default>false</default>
+                <label>Green</label>
+            </value>
+            <value>
+                <fullName>Yellow</fullName>
+                <color>#FFFF66</color>
+                <default>false</default>
+                <label>Yellow</label>
+            </value>
+            <value>
+                <fullName>Flashing Red</fullName>
+                <color>#FF6666</color>
+                <default>false</default>
+                <label>Flashing Red</label>
+            </value>
+            <value>
+                <fullName>Red</fullName>
+                <color>#FF0000</color>
+                <default>false</default>
+                <label>Red</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

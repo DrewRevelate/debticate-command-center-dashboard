@@ -1,0 +1,59 @@
+<template>
+    <div class="chart-container">
+        <!-- Chart Header with Type Icons -->
+        <div class="chart-header">
+            <div class="chart-type-icons">
+                <button class={verticalIconClass} title="Vertical Bar" data-type="vertical" onclick={handleChartTypeClick}>
+                    <svg viewBox="0 0 20 20" width="18" height="18">
+                        <rect x="2" y="10" width="4" height="8" fill="currentColor"/>
+                        <rect x="8" y="4" width="4" height="14" fill="currentColor"/>
+                        <rect x="14" y="7" width="4" height="11" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button class={horizontalIconClass} title="Horizontal Bar" data-type="horizontal" onclick={handleChartTypeClick}>
+                    <svg viewBox="0 0 20 20" width="18" height="18">
+                        <rect x="2" y="2" width="14" height="4" fill="currentColor"/>
+                        <rect x="2" y="8" width="10" height="4" fill="currentColor"/>
+                        <rect x="2" y="14" width="16" height="4" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <template if:false={chartJsLoaded}>
+            <div class="loading-state">
+                <lightning-spinner alternative-text="Loading chart..." size="medium"></lightning-spinner>
+                <p>Loading chart...</p>
+            </div>
+        </template>
+
+        <!-- Error State -->
+        <template if:true={chartError}>
+            <div class="error-state">
+                <lightning-icon icon-name="utility:error" size="medium" variant="error"></lightning-icon>
+                <p>{chartError}</p>
+            </div>
+        </template>
+
+        <!-- No Data State -->
+        <template if:true={chartJsLoaded}>
+            <template if:false={hasData}>
+                <div class="no-data-message">
+                    <lightning-icon icon-name="utility:chart" size="large"></lightning-icon>
+                    <p>No data available for the selected filters</p>
+                </div>
+            </template>
+        </template>
+
+        <!-- Chart Canvas -->
+        <template if:true={chartJsLoaded}>
+            <template if:true={hasData}>
+                <div class="chart-canvas-container">
+                    <canvas class="chart-canvas"></canvas>
+                </div>
+
+            </template>
+        </template>
+    </div>
+</template>

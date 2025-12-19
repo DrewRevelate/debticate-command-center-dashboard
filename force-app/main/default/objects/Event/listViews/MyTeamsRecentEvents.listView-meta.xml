@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MyTeamsRecentEvents</fullName>
+    <columns>START_DATE_TIME</columns>
+    <columns>END_DATE_TIME</columns>
+    <columns>Account__c</columns>
+    <columns>WHO_NAME</columns>
+    <columns>SUBJECT</columns>
+    <columns>WHAT_NAME</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>DUE_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2023 12:00 AM</value>
+    </filters>
+    <label>My Team&apos;s Recent Events</label>
+</ListView>

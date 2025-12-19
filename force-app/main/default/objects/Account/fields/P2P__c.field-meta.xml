@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>P2P__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to distinguish accounts who are active in P2P lending or crowdfunding.</description>
+    <label>P2P</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

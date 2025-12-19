@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Size__c</fullName>
+    <label>Account Size</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>&lt;$1B</fullName>
+                <default>false</default>
+                <label>&lt;$1B</label>
+            </value>
+            <value>
+                <fullName>$1B-$5B</fullName>
+                <default>false</default>
+                <label>$1B-$5B</label>
+            </value>
+            <value>
+                <fullName>$5B-$20B</fullName>
+                <default>false</default>
+                <label>$5B-$20B</label>
+            </value>
+            <value>
+                <fullName>$20B-$100B</fullName>
+                <default>false</default>
+                <label>$20B-$100B</label>
+            </value>
+            <value>
+                <fullName>&gt;$100B</fullName>
+                <default>false</default>
+                <label>&gt;$100B</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

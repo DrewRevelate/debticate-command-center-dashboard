@@ -1,0 +1,85 @@
+<template>
+    <div class="filter-bar">
+        <!-- Priority Series Toggle -->
+        <div class="filter-group">
+            <span class="filter-label">Series</span>
+            <div class="priority-toggle">
+                <button
+                    class={allSeriesButtonClass}
+                    onclick={handleAllSeriesClick}>
+                    All
+                </button>
+                <template for:each={prioritySeriesOptions} for:item="series">
+                    <button
+                        key={series.value}
+                        class={series.buttonClass}
+                        style={series.colorStyle}
+                        data-series={series.value}
+                        onclick={handleSeriesClick}>
+                        {series.label}
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Account Status Filter Chips -->
+        <div class="filter-group status-filters">
+            <span class="filter-label">Status</span>
+            <div class="status-chips">
+                <button
+                    class={allStatusChipClass}
+                    onclick={handleAllStatusClick}>
+                    All
+                </button>
+                <template for:each={statusFilters} for:item="filter">
+                    <button
+                        key={filter.status}
+                        class={filter.chipClass}
+                        style={filter.colorStyle}
+                        data-status={filter.status}
+                        onclick={handleStatusClick}>
+                        {filter.labelWithCount}
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Priority Code Chips -->
+        <template if:true={hasLegendItems}>
+            <div class="filter-group priority-codes-group">
+                <span class="filter-label">Priority</span>
+                <div class="priority-code-chips">
+                    <template for:each={legendItems} for:item="group">
+                        <template for:each={group.items} for:item="item">
+                            <button
+                                key={item.code}
+                                class={item.buttonClass}
+                                style={item.colorStyle}
+                                title={item.description}
+                                data-code={item.code}
+                                onclick={handlePriorityCodeClick}>
+                                {item.code}
+                            </button>
+                        </template>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <!-- Active Priority Code Filter Badge -->
+        <template if:true={hasPriorityCodeFilter}>
+            <div class="filter-group active-filter">
+                <span class="active-filter-badge">
+                    {priorityCodeFilterLabel}
+                    <button class="clear-filter-btn" onclick={handleClearPriorityCode}>
+                        <lightning-icon
+                            icon-name="utility:close"
+                            size="xx-small"
+                            alternative-text="Clear">
+                        </lightning-icon>
+                    </button>
+                </span>
+            </div>
+        </template>
+    </div>
+</template>

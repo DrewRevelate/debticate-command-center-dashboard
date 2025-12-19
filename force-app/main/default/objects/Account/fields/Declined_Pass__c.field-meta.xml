@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Declined_Pass__c</fullName>
+    <label>Declined/Pass</label>
+    <type>Number</type>
+    <precision>18</precision>
+    <scale>0</scale>
+    <required>false</required>
+    <defaultValue>0</defaultValue>
+    <description>Number of deals the account has declined or passed on</description>
+</CustomField>

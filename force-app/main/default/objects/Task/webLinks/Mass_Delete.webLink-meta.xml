@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mass_Delete</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Mass Delete</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/42.0/connection.js&quot;)}
+
+var selectedRecords = {!GETRECORDIDS($ObjectType.Task)};
+if (selectedRecords.length == 0) {
+    alert(&quot;Please select at least one task to delete.&quot;);
+} else {
+    if (confirm(&quot;Are you sure you want to delete the selected tasks?&quot;)) {
+        var result = sforce.connection.deleteIds(selectedRecords);
+        if (result[0].getBoolean(&quot;success&quot;)) {
+            alert(&quot;The selected tasks have been deleted.&quot;);
+        } else {
+            alert(&quot;Error deleting tasks: &quot; + result[0].errors.message);
+        }
+        location.reload();
+    }
+}</url>
+</WebLink>

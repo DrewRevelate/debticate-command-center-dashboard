@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Stage__c</fullName>
+    <label>Sales Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Identified Assets</fullName>
+                <default>false</default>
+                <label>Identified Assets</label>
+            </value>
+            <value>
+                <fullName>Discussed Reserve Price</fullName>
+                <default>false</default>
+                <label>Discussed Reserve Price</label>
+            </value>
+            <value>
+                <fullName>Sent Engagement Agreement</fullName>
+                <default>false</default>
+                <label>Sent Engagement Agreement</label>
+            </value>
+            <value>
+                <fullName>Signed Engagement Agreement</fullName>
+                <default>false</default>
+                <label>Signed Engagement Agreement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

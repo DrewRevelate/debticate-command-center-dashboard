@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_type__c</fullName>
+    <description>How was the initial contact with MF initiated?</description>
+    <inlineHelpText>How was the initial contact with MF initiated?</inlineHelpText>
+    <label>Lead type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Loan application form</fullName>
+                <default>true</default>
+                <label>Loan application form</label>
+            </value>
+            <value>
+                <fullName>Contact us form</fullName>
+                <default>false</default>
+                <label>Contact us form</label>
+            </value>
+            <value>
+                <fullName>Phone call</fullName>
+                <default>false</default>
+                <label>Phone call</label>
+            </value>
+            <value>
+                <fullName>Chat</fullName>
+                <default>false</default>
+                <label>Chat</label>
+            </value>
+            <value>
+                <fullName>Relationship</fullName>
+                <default>false</default>
+                <label>Relationship</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

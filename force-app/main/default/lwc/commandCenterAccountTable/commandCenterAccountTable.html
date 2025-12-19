@@ -1,0 +1,121 @@
+<template>
+    <div class="account-table-container">
+        <div class="table-header">
+            <h3 class="table-title">Account Details</h3>
+            <template if:true={selectedPriorityCode}>
+                <span class="filter-badge">
+                    Filtered: {selectedPriorityCode}
+                </span>
+            </template>
+            <div class="header-actions">
+                <template if:false={isEditMode}>
+                    <button class="edit-toggle-btn" onclick={handleToggleEditMode} title="Enable editing">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                        </svg>
+                        <span>Edit</span>
+                    </button>
+                </template>
+                <template if:true={isEditMode}>
+                    <button class="done-btn" onclick={handleToggleEditMode} title="Done editing">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Done</span>
+                    </button>
+                </template>
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <table class="account-table">
+                <thead>
+                    <tr>
+                        <th class="col-name">
+                            <button class={nameSortClass} data-field="name" onclick={handleSort}>
+                                Account Name
+                                <span class="sort-icon"></span>
+                            </button>
+                        </th>
+                        <th class="col-revenue">
+                            <button class={revenueSortClass} data-field="annualRevenue" onclick={handleSort}>
+                                Annual Revenue Est.
+                                <span class="sort-icon"></span>
+                            </button>
+                        </th>
+                        <th class="col-status">
+                            <button class={statusSortClass} data-field="status" onclick={handleSort}>
+                                Status
+                                <span class="sort-icon"></span>
+                            </button>
+                        </th>
+                        <th class="col-priority">
+                            <button class={prioritySortClass} data-field="priority" onclick={handleSort}>
+                                Priority
+                                <span class="sort-icon"></span>
+                            </button>
+                        </th>
+                        <th class="col-description">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={hasData}>
+                        <template for:each={tableData} for:item="row">
+                            <tr key={row.id} class={row.rowClass}>
+                                <td class="col-name">
+                                    <a class="account-link"
+                                       data-id={row.id}
+                                       onclick={handleAccountClick}>{row.name}</a>
+                                </td>
+                                <td class="col-revenue">
+                                    <span class="revenue-value">{row.formattedRevenue}</span>
+                                </td>
+                                <td class="col-status">
+                                    <template if:false={isEditMode}>
+                                        <span class={row.statusClass}>{row.status}</span>
+                                    </template>
+                                    <template if:true={isEditMode}>
+                                        <select class="inline-select"
+                                                data-row-id={row.id}
+                                                data-field="status"
+                                                onchange={handleFieldChange}>
+                                            <template for:each={statusOptions} for:item="opt">
+                                                <option key={opt.value}
+                                                        value={opt.value}
+                                                        selected={opt.value}>{opt.label}</option>
+                                            </template>
+                                        </select>
+                                    </template>
+                                </td>
+                                <td class="col-priority">
+                                    <template if:false={isEditMode}>
+                                        <span class="priority-code">{row.priority}</span>
+                                    </template>
+                                    <template if:true={isEditMode}>
+                                        <select class="inline-select inline-select-priority"
+                                                data-row-id={row.id}
+                                                data-field="priority"
+                                                onchange={handleFieldChange}>
+                                            <template for:each={priorityOptions} for:item="opt">
+                                                <option key={opt.value}
+                                                        value={opt.value}
+                                                        selected={opt.value}>{opt.label}</option>
+                                            </template>
+                                        </select>
+                                    </template>
+                                </td>
+                                <td class="col-description">
+                                    <span class="priority-desc">{row.priorityDescription}</span>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                    <template if:false={hasData}>
+                        <tr>
+                            <td colspan="5" class="no-data">No accounts match the current filters</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
